@@ -21,12 +21,13 @@ class MqttService
     @client.connected?
   end
 
-  def subscribe(topic)
+  def subscribe(topic, handler)
     @@subscribed_topics[topic] = true
     Rails.logger.info "Subscribed Topics: #{@@subscribed_topics.inspect}"
 
     @client.get(topic) do |topic, message|
       puts "Message: #{message} from topic: #{topic}"
+      handler.call(topic, message)
     end
   end
 

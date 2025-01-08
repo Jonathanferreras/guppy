@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_07_001900) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_08_041959) do
   create_table "device_updates", force: :cascade do |t|
     t.integer "device_id", null: false
-    t.string "type"
+    t.string "update_type"
     t.text "value"
     t.datetime "timestamp"
     t.datetime "created_at", null: false
