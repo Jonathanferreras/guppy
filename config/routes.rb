@@ -12,17 +12,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
   Rails.application.routes.draw do
-    get "mqtt/test_mqtt"
-
     resources :devices, only: [ :index ]
 
     namespace :api do
-      resources :devices, only: [] do
-        collection do
-          get :list_devices
-          post :register
-          post :validate
-        end
+      namespace :v1 do
+        resources :devices, only: [] do
+          collection do
+            get :list_devices
+            post :register
+            post :validate
+          end
+      end
       end
     end
   end

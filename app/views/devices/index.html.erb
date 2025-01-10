@@ -1,0 +1,27 @@
+<div class="is-size-1 mb-6">Registered Devices</div>
+
+<% @devices.each do |device| %>
+
+  <div id="device-<%= device.uuid %>" class="box" style="width: 30rem;">
+    <div class="header is-flex">
+      <span class="icon">
+        <i class="fa-solid fa-microchip"></i>    
+      </span>
+      <div class="name">
+        <%= device.name %>
+      </div>
+    </div>
+    <div class="content">
+      <div class="online-status"></div>
+      <div class="last-seen">
+        <%= device.last_seen %>
+      </div>
+    </div>
+    <div class="footer p-4">
+      <div class="device-uuid">
+        UUID: <%= device.uuid %>
+      </div>
+    </div>
+
+  </div>
+<% end %>
