@@ -11,19 +11,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "dashboard#index"
-  Rails.application.routes.draw do
-    resources :devices, only: [ :index, :new, :create ]
 
-    namespace :api do
-      namespace :v1 do
-        resources :devices, only: [] do
-          collection do
-            get :list_devices
-            post :register
-            post :validate
-          end
-      end
-      end
+  resources :devices do
+    member do
+      get "updates"
+    end
+  end
+
+  namespace :api do
+    namespace :v1 do
     end
   end
 end

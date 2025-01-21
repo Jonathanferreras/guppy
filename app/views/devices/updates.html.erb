@@ -1,0 +1,33 @@
+<div class="is-size-1 mb-6">Updates</div>
+<ul>
+  <li>
+    <a href="/">Back to Dashboard</a>
+  </li>
+  <li>
+    <a href="/devices">Back to Devices</a>
+  </li>
+</ul>
+<% if @updates.length == 0 %>
+  <div>No updates from this device</div>
+<% else %>
+  <% @updates.each do |update| %>
+    <% payload = update.payload.is_a?(String) ? JSON.parse(update.payload) : update.payload %>
+    <div class="box">
+      <div>
+        <span class="icon">
+          <i class="fa-solid fa-devicethermostat"></i>    
+        </span>
+        <div>id: <%= update.id %></div>
+        <div>Type: <%= update.update_type %></div>
+      </div>
+      <div class="footer">
+        <% if update.update_type == "climate" %>
+          <div>Temperature: <%= payload["temperature"] %></div>
+          <div>Humidity: <%= payload["humidity"] %></div>
+          <div>Date: <%= payload["timestamp"] %></div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

@@ -3,6 +3,8 @@ require "#{Rails.root}/app/services/device_service"
 
 mqtt_service = MqttService.new("localhost", 1883)
 device_service = DeviceService.new
+Rails.application.config.mqtt_service = mqtt_service
+Rails.application.config.device_service = device_service
 
 # Log connection attempt
 Rails.logger.info "Connecting to MQTT broker..."
@@ -28,7 +30,3 @@ end
 at_exit do
   mqtt_service.disconnect if mqtt_service.connected?
 end
-
-
-Rails.application.config.mqtt_service = mqtt_service
-Rails.application.config.device_service = device_service

@@ -26,7 +26,27 @@ class DevicesController < ApplicationController
     end
   end
 
+  def updates
+    device = Device.find_by(uuid: device_update_params[:id])
+    puts "Device: #{device.inspect}"
+
+    if device
+      device_updates = DeviceUpdate.where(device_id: device.id).order(created_at: :desc)
+      puts "Device Updates: #{device_updates.inspect}"
+
+      if device_updates
+        return @updates = device_updates
+      end
+    end
+
+    @updates = []
+  end
+
   def device_params
     params.require(:device).permit(:name)
+  end
+
+  def device_update_params
+    params.permit(:id)
   end
 end
