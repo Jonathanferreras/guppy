@@ -4,10 +4,16 @@ one:
   name: MyString
   uuid: MyString
   online: false
-  last_seen: 2025-01-06 16:36:38
+  device_type: one
+  mqtt_username: MyString
+  mqtt_password: MyString
+  last_seen: 2025-01-15 16:24:07
 
 two:
   name: MyString
   uuid: MyString
   online: false
-  last_seen: 2025-01-06 16:36:38
+  device_type: two
+  mqtt_username: MyString
+  mqtt_password: MyString
+  last_seen: 2025-01-15 16:24:07

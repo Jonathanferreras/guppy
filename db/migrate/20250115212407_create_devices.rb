@@ -4,7 +4,7 @@ class CreateDevices < ActiveRecord::Migration[8.0]
       t.string :name
       t.string :uuid
       t.boolean :online
-      t.datetime :last_seen
+      t.timestamp :last_seen
 
       t.timestamps
     end

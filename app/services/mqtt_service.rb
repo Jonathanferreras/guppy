@@ -1,9 +1,10 @@
 require "mqtt"
+require "bcrypt"
 
 class MqttService
   @@subscribed_topics = {}
 
-  def initialize(host, port = 1883)
+  def initialize(host = "localhost", port = 1883)
     @client = MQTT::Client.new
     @client.host = host
     @client.port = port

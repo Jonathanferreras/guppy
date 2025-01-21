@@ -1,0 +1,26 @@
+<div class="is-size-1 mb-6">New Device</div>
+<%= link_to 'Back', devices_path %>
+
+<%= form_with model: @device, local: true, html: { class: 'box' } do |form| %>
+  <% if @device.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@device.errors.count, "error") %> prohibited this device from being saved:</h2>
+      <ul>
+        <% @device.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="field">
+    <label class="label">Name</label>
+    <div class="control">
+      <%= form.text_field :name, class: "input", placeholder: "e.g. Climate Monitor Device" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <button class="button is-primary" type="submit">Add Device</button>
+  </div>
+<% end %>

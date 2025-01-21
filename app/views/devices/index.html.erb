@@ -1,7 +1,13 @@
 <div class="is-size-1 mb-6">Registered Devices</div>
-
+<ul>
+  <li>
+    <a href="/">Back to Dashboard</a>
+  </li>
+  <li>
+    <a href="/devices/new">Add Device</a>
+  </li>
+</ul>
 <% @devices.each do |device| %>
-
   <div id="device-<%= device.uuid %>" class="box" style="width: 30rem;">
     <div class="header is-flex">
       <span class="icon">
@@ -12,7 +18,9 @@
       </div>
     </div>
     <div class="content">
-      <div class="online-status"></div>
+      <div class="online-status">
+        <%= device.online ? "Online" : "Offline" %>
+      </div>
       <div class="last-seen">
         <%= device.last_seen %>
       </div>
@@ -22,6 +30,5 @@
         UUID: <%= device.uuid %>
       </div>
     </div>
-
   </div>
 <% end %>
