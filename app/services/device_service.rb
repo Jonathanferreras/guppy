@@ -1,17 +1,14 @@
 class DeviceService
-  def process_device_update(device_id, message)
-    device = Device.find_by(uuid: device_id)
+  def process_device_update(topic, message)
+    update_type = topic.split("/").last
+    payload = JSON.parse(message) rescue nil
 
-    return Rails.logger.error "Device not found for UUID: #{device_id}" unless device
-
-    parsed_message = JSON.parse(message) rescue nil
-
-    if parsed_message
+    if payload
+      device = Device.find_or_create_by!(name: payload["device_name"])
       device_update = DeviceUpdate.new(
         device: device,
-        payload: parsed_message["type"],
-        value: parsed_message["value"],
-        timestamp: parsed_message["timestamp"]
+        payload: payload,
+        update_type: update_type
       )
 
       if device_update.save

@@ -1,19 +1,7 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  uuid: MyString
+  name: "Living Room Guppy"
+  uuid: "e4269f0a-fa0e-4614-b191-45b8c3546996"
   online: false
-  device_type: one
-  mqtt_username: MyString
-  mqtt_password: MyString
-  last_seen: 2025-01-15 16:24:07
-
-two:
-  name: MyString
-  uuid: MyString
-  online: false
-  device_type: two
-  mqtt_username: MyString
-  mqtt_password: MyString
   last_seen: 2025-01-15 16:24:07
