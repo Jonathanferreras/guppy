@@ -24,7 +24,7 @@
         <% if update.update_type == "climate" %>
           <div>Temperature: <%= payload["temperature"] %></div>
           <div>Humidity: <%= payload["humidity"] %></div>
-          <div>Date: <%= payload["timestamp"] %></div>
+          <div>Date: <%= format_time(payload["timestamp"]) %></div>
         <% end %>
       </div>
     </div>

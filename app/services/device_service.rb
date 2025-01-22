@@ -5,6 +5,11 @@ class DeviceService
 
     if payload
       device = Device.find_or_create_by!(name: payload["device_name"])
+
+      # if payload["device_type"] == "heartbeat"
+      #   device = Device.update(device.id, online: payload["online"], last_seen: payload["timestamp"])
+      # end
+
       device_update = DeviceUpdate.new(
         device: device,
         payload: payload,
