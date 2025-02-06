@@ -7,29 +7,9 @@
     <a href="/devices/new">Add Device</a>
   </li>
 </ul>
-<% @devices.each do |device| %>
-  <div id="device-<%= device.uuid %>" class="box" style="width: 30rem;">
-    <div class="header is-flex">
-      <span class="icon">
-        <i class="fa-solid fa-microchip"></i>    
-      </span>
-      <div class="name">
-        <%= device.name %>
-      </div>
-      <a class="ml-auto" href="/devices/<%= device.uuid %>/updates">Updates</a>
-    </div>
-    <div class="content">
-      <div class="online-status">
-        <%= device.online ? "Online" : "Offline" %>
-      </div>
-      <div class="last-seen">
-        <%= device.last_seen %>
-      </div>
-    </div>
-    <div class="footer p-4">
-      <div class="device-uuid">
-        UUID: <%= device.uuid %>
-      </div>
-    </div>
-  </div>
-<% end %>
+
+<%= turbo_stream_from "devices" %>
+
+<div class="devices">
+  <%= render @devices %>
+</div>
