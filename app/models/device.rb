@@ -6,7 +6,7 @@ class Device < ApplicationRecord
       "devices",
       target: "device_#{id}",
       partial: "devices/device",
-      locals: {device: self}
+      locals: { device: self }
     )
   end
 end

@@ -15,7 +15,7 @@ class DeviceService
         device.update(last_seen: payload["timestamp"])
         device.broadcast_device_update
       end
-      
+
       device_update = DeviceUpdate.new(
         device: device,
         payload: payload,
